@@ -1,0 +1,64 @@
+.anuncioComponente{
+    padding-top: 2em;
+    padding-bottom: 2em;
+    
+}
+.tituloAnuncio{
+    margin-left: 20%;    
+}
+
+.left i:hover{
+    border: solid 1px rgba(129, 129, 129, 0.9);
+    border-radius: 200px 40px 40px 200px  ;
+    background-color: rgba(255, 255, 255, 0.733);
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.right i:hover{
+    border: solid 1px rgba(129, 129, 129, 0.9);
+    border-radius: 40px 200px 200px 40px  ;
+    background-color: rgba(255, 255, 255, 0.733);
+    color: rgba(0, 0, 0, 0.9);    
+}
+
+i:hover .card{
+    background-color: #fff;
+    color: #fff;
+}
+
+.btnAnuncio i{
+    font-size: 6em;
+}
+.btnAnuncio{
+    color: #fff;
+    
+}
+
+.anunciosCalendario h6{
+    font-weight: 600;
+}
+.anunciosCalendario code{
+    margin-left: 0px;
+    font-size: 12px;
+}
+
+.divAnucio, .tituloCard{
+    margin-bottom: -70px;
+    
+  }
+
+@media(max-width: 600px){
+    .btnAnuncio i{
+        font-size: 4em;
+    }
+    .tituloAnuncio{
+        display: inline;
+        text-align: center;
+        margin-left: 2%;    
+        font-weight: 500;        
+    }
+    .divAnucio, .tituloCard{
+        margin-bottom: -40px;     
+      }
+}
+

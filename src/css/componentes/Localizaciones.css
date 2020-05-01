@@ -1,0 +1,49 @@
+.btnLocacion{
+    margin: auto 2em;
+    border: solid 2px #000;
+    border-radius: 5px;
+    padding: 15px 20px;
+    color: #000;
+    background-color: transparent ;
+}
+.btnLocacion:hover{
+    color: #000;
+    background-color: rgba(145, 145, 145, 0.473);
+    font-weight: 600;
+    font-size: (initial + 10%);
+}
+@media (max-width: 600px) {
+    .btnLocacion{
+        font-weight: 400;
+        margin: auto 3px;
+    }
+}
+@media (min-width: 900px) {
+    .btnLocacion{
+        margin: auto 5em;
+        padding: 15px 40px;
+        font-weight: 600;
+    }
+    .btnLocacion:hover{
+        color: #000;
+        font-weight: 800;
+        font-size: (initial + 10%);
+        
+      }
+      
+      
+}
+.disabled{
+    pointer-events:none;
+    cursor: default;
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+  }
+.btnGrupo{
+    margin-bottom: 6em;
+}
+
+h2{
+    margin: 0px 0px 2em 0px;
+}

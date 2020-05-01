@@ -1,0 +1,109 @@
+nav{
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 0px;
+}
+
+.navT{
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+}
+.navI{
+    background-color: #fff;
+    color: black;
+    text-decoration: #000;
+}
+
+.navI ul a{
+    color: #000;
+    background-color: #fff;
+    
+}
+.navI .material-icons {
+    color: #000 !important; 
+}
+
+.navI ul a:hover{
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+    
+}
+@media (max-width: 600px){
+    .brand-logo img{
+    margin: 0px;
+    padding-right:50%;
+}
+}
+.brand-logo{
+    margin-left: 20px;
+}
+.brand-logo > img {
+    
+    width: auto;
+    height: 65px;
+    margin-top: 0;
+}
+a{
+    font-weight: 200;
+    
+}
+nav ul a:hover{
+    color: #000;
+    background-color: #fff;
+    font-weight: 200;  
+}
+
+.sidenav{
+    background-color: rgba(0, 0, 0, 0.4);
+    
+}
+.sidenav li>a{
+    color: #fff;
+    font-weight: 200;
+}
+
+.sidenav li>a:hover{
+    color: #000;
+    background-color: #fff;
+    font-weight: 200;
+}
+.sidenav .collapsible-header{
+    padding-left: 32px;
+}
+.sidenav .collapsible-header:hover{
+    background-color: #fff;
+    padding-left: 32px;
+}
+.collapsible-body li>a{
+    color: #000;
+    background-color: #fff;
+    font-weight: 200;
+}
+
+.collapsible-body li>a:hover{
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+    font-weight: 200;
+}
+
+
+nav .dropdown-content li>a{
+    color: #000;
+    font-weight: 200;
+    text-align: center;
+    
+}
+nav .dropdown-content li>a:hover{
+    color: #fff;
+    font-weight: 200;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 0.1px solid black;
+
+}
+
+.sidenav .footer-nav{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-align: center;
+    color: #fff;
+}

@@ -1,0 +1,44 @@
+.slider .slides li img {
+    margin: 0px;
+    padding: 0px;
+    filter:brightness(0.8);
+    
+}
+
+.slider .slides {
+    background-color: transparent !important;
+}
+.slider{
+    position: inherit;
+    
+}
+
+.slider h1{
+    font-size:  75px;
+    font-weight: 300;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+}
+@media (max-width: 600px) {
+    .slider h1 {
+        font-size:  40px;
+        font-weight: 400;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+}
+
+
+.btnBanner{
+    border: solid 2px #fff;
+    border-radius: 5px;
+    padding: 15px 30px;
+    color: #fff;
+    background-color: rgba(0,0,0, 0.2);
+}
+.btnBanner:hover{
+    color: #000;
+    background-color:#fff;
+    font-weight: 600;
+    font-size: (initial + 10%);
+}
