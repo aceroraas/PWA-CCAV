@@ -23,7 +23,7 @@ return (
         <div className="col s12">
             <div className="row">
             {(mostrar|| []).map(e=>
-                    <div key={e.id} className='col s12 m2 center'>
+                    <div key={e.id} className='col s12 m3 center'>
                     <h6>{e.nombre.toLocaleUpperCase()}</h6>
                         <Link
                         to={`${url}/prueba?frame=${e.iframe}&name=${e.nombre}`}
@@ -40,7 +40,7 @@ return (
         </div>
     </div>
 </div>
-
+<br/><br/><br/>
     <Route path={`${path}/:canal`}>
         <Canal name={query.get("name")} frame={query.get("frame")} />
     </Route>
@@ -52,7 +52,7 @@ function Canal(props) {
     console.log(props);
 
 return (
-    <div>
+    <>
     <center>
         <h1>CANAL DE {props.name.toLocaleUpperCase()}</h1>
         <h5>en vivo</h5>
@@ -67,7 +67,8 @@ return (
         />
         </div>
     </center>
-    </div>
+    </>
+    
 );
 }
 
