@@ -1,18 +1,7 @@
-iframe{
-    border:none;
-    overflow:hidden;
-    width: 560px;
-    height: 420px;
-}
+
 .col img{
     width: 90px;
     height: 90px;
     border: solid 3px rgba(39, 133, 161, 0.849);
     padding: 0;
-}
-@media (max-width: 600pX){
-    iframe{
-    width: 320px;
-    height: 240px;
-    }
 }
