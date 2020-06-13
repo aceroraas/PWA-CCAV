@@ -4,6 +4,7 @@ import '../css/componentes/Navbar.css';
 
 //recursos
 import logotipo from '../recursos/img/logotipo/ccav.svg';
+import { Link } from 'react-router-dom';
 
 
 class Navbar extends Component {
@@ -34,6 +35,15 @@ class Navbar extends Component {
             
           }
 
+
+
+          document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.tooltipped');
+            // eslint-disable-next-line
+            var instances = M.Tooltip.init(elems,{position:'top', transitionMovement: 0});
+          });
+
+          
         //sidenav init
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
@@ -53,6 +63,11 @@ class Navbar extends Component {
             // eslint-disable-next-line
             var instances = M.Collapsible.init(elems);
           });
+          document.addEventListener('DOMContentLoaded', function () {
+            let elems = document.querySelectorAll('.slider');
+            // eslint-disable-next-line
+            let instances = M.Slider.init(elems, { height: 720, indicators: false, duration: 400, interval: 6000 });
+        });
     }
     
    
@@ -63,53 +78,55 @@ class Navbar extends Component {
                 <div className='navbar-fixed'>
                     <nav>
                         <div className="nav-wrapper fixed">
-                                <a href="./" className="brand-logo"><img width='50' src={logotipo} alt='Logotipo ccav'></img></a>
+                                <Link to="/" className="brand-logo"><img width='50' src={logotipo} alt='Logotipo ccav'></img></Link>
                                 <a href="#a" data-target="slide-out" className="sidenav-trigger right"><i className="material-icons">menu</i></a>
                             <ul id="nav-mobile" className="right hide-on-med-and-down">
-                                <li><a href="/">INICIO</a></li>
-                                <li><a href="/vidavertical">JOVENES</a></li>
+                                <li><Link to="/">INICIO</Link></li>
+                                <li><Link to="/vidavertical">JOVENES</Link></li>
                                 <li><a className='dropdown-trigger' href='#MEDIA' data-target='dropdown1'>MEDIA</a></li>
-                                <li><a href='/login'>INICIAR SESIÓN</a></li>
+                                <li><Link to='/login'>INICIAR SESIÓN</Link></li>
                             </ul>
                         </div>
                     </nav>
                 </div>
                 
                 <ul id="slide-out" className="sidenav">                
-                    <li><a href="/">INICIO</a></li>
-                    <li><a href="./vidavertical">JOVENES</a></li>
+                    <li><Link to="/">INICIO</Link></li>
+                    <li><Link to="./vidavertical">JOVENES</Link></li>
                     <li className="no-padding">
                         <ul className="collapsible collapsible-accordion">
                             <li>
                                 <a href='#4'className="collapsible-header">MEDIA</a>
                                 <div className="collapsible-body">
                                     <ul>
-                                        <li><a href="/vivo">VIVO</a></li>
-                                        <li><a href="/documentos">DOCUMENTOS</a></li>
-                                        <li><a href="/predicaciones">PREDICACIONES</a></li>
-                                        <li><a href="/podcast">PODCAST</a></li>
-                                        <li><a href="/youtube">YOUTUBE</a></li>
-                                        <li><a href="/blog">BLOG</a></li>
-                                        <li><a href="/voluntario">VOLUNTARIO</a></li>
-                                        <li><a href="/galeria">GALERIA</a></li>
+                                        
+                                        <li><Link to="/vivo">VIVO</Link></li>
+                                        <li><Link to="/documentos">DOCUMENTOS</Link></li>
+                                        <li><Link to="/predicaciones">PREDICACIONES</Link></li>
+                                        <li><Link to="/podcast">PODCAST</Link></li>
+                                        <li><Link to="/youtube">YOUTUBE</Link></li>
+                                        <li><Link to="/blog">BLOG</Link></li>
+                                        <li><Link to="/voluntario">VOLUNTARIO</Link></li>
+                                        <li><Link to="/galeria">GALERIA</Link></li>
+                                        
                                     </ul>
                                 </div>
                             </li>
                         </ul>
                     </li>
-                    <li><a href='/login'>INICIAR SESIÓN</a></li>
+                    <li><Link to='/login'>INICIAR SESIÓN</Link></li>
                     <div className='footer-nav'><small><h6>HECHO POR <a href='https://instagram.com/aceroraas'>RAAS</a> CON <i className='material-icons  pink-text tiny'>favorite_border</i> PARA CCAV</h6></small></div>
                 </ul>
    
                 <ul id='dropdown1' className='dropdown-content'>
-                  <li><a href="/vivo">VIVO</a></li>
-                  <li><a href="/documentos">DOCUMENTOS</a></li>
-                  <li><a href="/predicaciones">PREDICACIONES</a></li>
-                  <li><a href="/podcast">PODCAST</a></li>
-                  <li><a href="/youtube">YOUTUBE</a></li>
-                  <li><a href="/blog">BLOG</a></li>
-                  <li><a href="/voluntario">VOLUNTARIO</a></li>
-                  <li><a href="/galeria">GALERIA</a></li>
+                  <li><Link to="/vivo">VIVO</Link></li>
+                  <li><Link to="/documentos">DOCUMENTOS</Link></li>
+                  <li><Link to="/predicaciones">PREDICACIONES</Link></li>
+                  <li><Link to="/podcast">PODCAST</Link></li>
+                  <li><Link to="/youtube">YOUTUBE</Link></li>
+                  <li><Link to="/blog">BLOG</Link></li>
+                  <li><Link to="/voluntario">VOLUNTARIO</Link></li>
+                  <li><Link to="/galeria">GALERIA</Link></li>
                 </ul>
         
         </div> 

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import '../css/componentes/Footer.css';
+import { Link } from 'react-router-dom';
 
 
 class Footer extends Component{
 
 render(){
     return(
+      
         <footer className="page-footer  cyan darken-3">
           <div className="container">
             <div className="row">
@@ -20,13 +22,13 @@ render(){
               <div className="col l4 offset-l2 s12">
                 <h5 className="white-text">Enlaces que tal vez te interesen</h5>
                 <ul>
-                  <li><a className="grey-text text-lighten-3" href="/barcelona">Sede Barcelona</a></li>
-                  <li><a className="grey-text text-lighten-3" href="/puerto">Sede Puerto La cruz</a></li>
-                  <li><a className="grey-text text-lighten-3" href="/vidaverticalb">Vida Vertical Jovenes Barcelona</a></li>
-                  <li><a className="grey-text text-lighten-3" href="/vidaverticalp">Vida Vertical Jovenes Puerto</a></li>
-                  <li><a className="grey-text text-lighten-3" href="/media/tipografia">Tipografia de la web</a></li>
-                  <li><a className="grey-text text-lighten-3" href="/media/logotipo">Logotipos Prototipos</a></li>
-                  <li><a className="grey-text text-lighten-3" href="/equipo/dev">Desarrolladores de la web</a></li>
+                  <li><Link className="grey-text text-lighten-3" to="/barcelona">Sede Barcelona</Link></li>
+                  <li><Link className="grey-text text-lighten-3" to="/puerto">Sede Puerto La cruz</Link></li>
+                  <li><Link className="grey-text text-lighten-3" to="/vidaverticalb">Vida Vertical Jovenes Barcelona</Link></li>
+                  <li><Link className="grey-text text-lighten-3" to="/vidaverticalp">Vida Vertical Jovenes Puerto</Link></li>
+                  <li><Link className="grey-text text-lighten-3" to="/media/tipografia">Tipografia de la web</Link></li>
+                  <li><Link className="grey-text text-lighten-3" to="/media/logotipo">Logotipos Prototipos</Link></li>
+                  <li><Link className="grey-text text-lighten-3" to="/equipo/dev">Desarrolladores de la web</Link></li>
                 </ul>
               </div>
             </div>
