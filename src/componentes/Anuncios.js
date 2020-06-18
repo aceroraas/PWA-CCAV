@@ -2,357 +2,175 @@ import React, { useState, useEffect } from 'react';
 import '../css/componentes/Anuncios.css';
 import firebase from "../firebaseConfig";
 import 'firebase/firebase-database';
-/* 
-console.log('se ejecutaron los import');
-
-let ruta = Ruta();
-let i = 0;
-var varios = [];
-console.log('se ejecutaron las variables ruta,i,varios');
-
-
-function Ruta() {
-  console.log('se ejecuto funcion ruta');
-  let a = window.location.pathname, b;
-  if (a !== "/") {
-    b = a.split("/", 3);
-
-    if (b.length >= 3) {
-      return false;
-    } else {
-
-      b = b[1].toLocaleLowerCase();
-
-      return "/" + b;
-
-    }
-
-  } else {
-    return "/";
-  }
-
-
-}
-
-class Anuncios extends Component {
-  constructor(props) {
-    super(props);
-    console.log('se ejecuto el construtor');
-    this.state = { anuncios: null };
-    console.log('se ejecuto el state');
-    // Este enlace es necesario para hacer que `this` funcione en el callback
-    this.clickSiguienteAnuncio = this.clickSiguienteAnuncio.bind(this);
-    this.clickSAnteriorAnuncio = this.clickSAnteriorAnuncio.bind(this);
-    this.bannerFirebase = this.bannerFirebase.bind(this);
-    this.indice = this.indice.bind(this);
-    console.log('se ejecuto this.click en contructor');
-  }
-
-
-  indice(e) {
-    console.log('se ejecuto funcion indice');
-    let a;
-    let limite = (varios.length - 1);
-    if (i > limite) {
-      i = 0;
-      a = varios[i];
-    } else if (i < 0) {
-      i = limite;
-      a = varios[i];
-    } else {
-
-      if (e) {
-
-        a = varios[i];
-        i++;
-      } else {
-
-        a = varios[i];
-        i--;
-
-      }
-
-
-    }
-    return a;
-  }
-
-
-  bannerFirebase(a) {
-    console.log('se ejecuto funcion bannerFirebase');
-    const referncia = firebase.database().ref('/anuncios');
-    referncia.on('value', (e) => {
-      if (a === '/') {
-        let c = e.val();
-        varios = [];
-        for (const key in c) {
-          let b = c[key];
-          varios.push({ a: key, b });
-        }
-        console.log('se ejecuto consulta a db');
-        this.setState(state => ({ anuncios: varios[0] }))
-      } else {
-        let b = e.child(a).val();
-
-        if (b === undefined || b === null) {
-          console.log('no hay datos _ anuncios va a romperse');
-        } else {
-          a = a.split('/');
-          a = a[1].toLocaleLowerCase();
-
-          this.setState(state => ({ anuncios: { a: a, b } }));
-
-
-          console.log('se ejecuto base de datos para :' + a);
-        }
-      }
-    });
-  }
-
-
-
-  clickSiguienteAnuncio() {
-
-    console.log('se click derecho');
-    this.setState(state => ({ anuncios: this.indice(true) }));
-
-  }
-
-  clickSAnteriorAnuncio() {
-    console.log('se click izquierdo');
-    this.setState(state => ({ anuncios: this.indice(false) }));
-  }
-  componentDidUpdate(prevProps, prevState) {
-    console.log('se ejecuto funcion componentDidUpdate');
-    if (ruta !== '/') {
-      document.getElementById('ab1').hidden = true;
-      document.getElementById('ab2').hidden = true;
-    }
-  }
-
-
-  componentDidMount() {
-    console.log('se ejecuto funcion componentDidMount');
-    this.bannerFirebase(ruta);
-    if (anuncios === null) {
-      console.log('log en null');
-
-    } else {
-      console.log('log en render');
-    }
-  }
-
-    
-
-*/
-function useBuscarAnuncios(ruta) {
-  let [grupoDeAnuncios, setGrupoDeAnuncios] = useState(null);
-
-  useEffect(() => {
-    firebase.database().ref('/pagina/' + ruta + '/anuncios/').on('value', (e) => {
-      let rutas = e.val();
-      if (rutas !== null) {
-        if (rutas.ruta_objeto !== undefined) {
-          for (let i = 0; i < rutas.ruta_objeto.length; i++) {
-           firebase.database().ref(rutas.ruta_objeto[i]).on('value',(e)=>{
-                        
-           });
-           
-          }
-        } else {
-          console.log(rutas);
-        }
-
-      } else { console.log('error base de datos, devuelve null'); }
-
-    });
-  }, [setGrupoDeAnuncios, ruta]);
-  return grupoDeAnuncios;
-}
-
-
+import Cargando from './Cargando';
 
 function Anuncios(props) {
-  let anuncios = null;
-  console.log(
-    useBuscarAnuncios(props.ruta)
-  );
+  const anuncio = useFirebaseAnuncios(props.ruta);
+console.log(anuncio);
 
-
-  if (anuncios === null) {
-    console.log('render null');
-    return (<div className='anuncioComponente white-text cyan darken-1'>
-      <center>
-        <br />
-        <h2 >No se encontraron anuncios</h2>
-        <br />
-      </center>
-
-
-    </div>)
+  if (anuncio === undefined) {
+    return <center><Cargando /></center>
   } else {
 
-    return (
-      <div>
-        <div className='anuncioComponente white-text cyan darken-1'>
+    return <>
+
+      <div className='anuncioComponente white-text cyan darken-1'>
+
+        <a href='#l' id='btni' className='btnAnuncio'><i className='material-icons'>chevron_left</i></a>
+        <a href='#l' id='btnd' className='btnAnuncio'><i className='material-icons'>chevron_right</i></a>
+        <h2>Anuncios Semanales</h2>
+        <h3>Actividades de la iglesia</h3>
+      </div>
+      {(anuncio instanceof Array) ? anuncio.map((e, i) =>
+        <div key={i} id={i} className='fondoTarjetas'>
           <center>
-            <div className='row'>
-              <div className='col s12 divAnucio'>
-                <div className='row'>
-                  <div className='col s3 left'>
-                    <a href='#l' id='ab1' className='btnAnuncio'><i className='material-icons aa'>chevron_left</i></a>
-                  </div>
-                  <div className='col s5 '>
-                    <h2 className='tituloAnuncio'>Anuncios Semanales</h2>
-                  </div>
-                  <div className='col s3 right'>
-                    <a href='#l' id='ab2' className='btnAnuncio'><i className='material-icons aa'>chevron_right</i></a>
-                  </div>
-                </div>
+            <h5>CCAV - {e.lugar.toUpperCase()}</h5>
+          </center>
+          {(e.anuncio !== null) ?
+            <>
+
+              <div className="tarjeta">
+                <h2>LUNES</h2>
+                <h6>{e.anuncio.lunes.titulo}</h6>
+                <p>{e.anuncio.lunes.info}</p><br />
+                <code>Inicia: {e.anuncio.lunes.hora_inicio} <br /> Termina: {e.anuncio.lunes.hora_fin}</code>
               </div>
-            </div>
-            <h3>Actividades de la iglesia</h3>
-            <h5>CCAV - {anuncios.a.toUpperCase()}</h5>
+
+
+              <div className="tarjeta">
+
+                <h2>MARTES</h2>
+                <h6>{e.anuncio.martes.titulo}</h6>
+                <p>{e.anuncio.martes.info}</p><br />
+                <code>Inicia: {e.anuncio.martes.hora_inicio} <br /> Termina: {e.anuncio.martes.hora_fin}</code>
+              </div>
+
+
+              <div className="tarjeta">
+
+                <h2>MIERCOLES</h2>
+                <h6>{e.anuncio.miercoles.titulo}</h6>
+                <p>{e.anuncio.miercoles.info}</p><br />
+                <code>Inicia: {e.anuncio.miercoles.hora_inicio} <br /> Termina: {e.anuncio.miercoles.hora_fin}</code>
+              </div>
+
+
+              <div className="tarjeta">
+
+                <h2>JUEVES</h2>
+                <h6>{e.anuncio.jueves.titulo}</h6>
+                <p>{e.anuncio.jueves.info}</p><br />
+                <code>Inicia: {e.anuncio.jueves.hora_inicio} <br /> Termina: {e.anuncio.jueves.hora_fin}</code>
+              </div>
+
+
+              <div className="tarjeta">
+
+                <h2>VIERNES</h2>
+                <h6>{e.anuncio.viernes.titulo}</h6>
+                <p>{e.anuncio.viernes.info}</p><br />
+                <code>Inicia: {e.anuncio.viernes.hora_inicio} <br /> Termina: {e.anuncio.viernes.hora_fin}</code>
+              </div>
+
+
+              <div className="tarjeta">
+
+                <h2>SABADO</h2>
+                <h6>{e.anuncio.sabado.titulo}</h6>
+                <p>{e.anuncio.sabado.info}</p><br />
+                <code>Inicia: {e.anuncio.sabado.hora_inicio} <br /> Termina: {e.anuncio.sabado.hora_fin}</code>
+              </div>
+
+
+              <div className="tarjeta">
+
+                <h2>DOMINGO</h2>
+                <h6>{e.anuncio.domingo.titulo}</h6>
+                <p>{e.anuncio.domingo.info}</p><br />
+                <code>Inicia: {e.anuncio.domingo.hora_inicio} <br /> Termina: {e.anuncio.domingo.hora_fin}</code>
+              </div>
+
+
+              {e.anuncio.especial !== undefined ?
+                e.anuncio.especial.aviso === true ?
+                  <div className="tarjeta">
+                    <h2>ESPECIAL</h2>
+                    <h6>{e.anuncio.especial.titulo}</h6>
+                    <p>{e.anuncio.especial.info}</p><br />
+                    <code>Inicia: {e.anuncio.especial.hora_inicio} <br /> Termina: {e.anuncio.especial.hora_fin}</code>
+                  </div>
+                  : <div className="tarjeta ">
+                    <h2>ESPECIAL</h2>
+                    <h6>NO HAY ANUNCIO ESPECIAL</h6>
+                  </div>
+
+                :
+                <div className="tarjeta ">
+                  <h2>ESPECIAL</h2>
+                  <h6>NO HAY ANUNCIO ESPECIAL</h6>
+                </div>}
+
+            </>
+            :
+            <div>
+              <br />
+              <br />
+              <center>
+                <h2>NO SE HAN CONFIGURADO LOS ANUNCIOS</h2>
+              </center>
+
+            </div>}
+
+        </div>
+
+
+      )
+        ://en caso de que no sea un array
+        <div>
+          <br />
+          <br />
+          <center>
+            <h2>NO SE ENCONTRARON LOS ANUNCIOS</h2>
           </center>
 
-
         </div>
-        <div className='anunciosCalendario'>
-          <div className='row'>
-            <div className="col s12 m3">
-              <div className="card horizontal">
-                <div className="card-stacked">
-                  <div className="card-content">
-                    <div className='tituloCard'>
-                      <h2>LUNES</h2>
-                    </div>
-                    <h6>{anuncios.b.lunes.titulo}</h6>
-                    <p>{anuncios.b.lunes.info}</p><br />
-                    <code>Inicia: {anuncios.b.lunes.hora_inicio} - Termina: {anuncios.b.lunes.hora_fin}</code>
-                  </div>
-                  <div className="card-action">
-                    <a href="#a" className='blue-text'><i className='material-icons black-text left'>event</i>Agregar a mi calendario</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col s12 m3">
-              <div className="card horizontal">
-                <div className="card-stacked">
-                  <div className="card-content">
-                    <div className='tituloCard'>
-                      <h2>MARTES</h2>
-                    </div>
-                    <h6>{anuncios.b.martes.titulo}</h6>
-                    <p>{anuncios.b.martes.info}</p><br />
-                    <code>Inicia: {anuncios.b.martes.hora_inicio} - Termina: {anuncios.b.martes.hora_fin}</code>
-                  </div>
-                  <div className="card-action">
-                    <a href="#a" className='blue-text'><i className='material-icons black-text left'>event</i>Agregar a mi calendario</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col s12 m3">
-              <div className="card horizontal">
-                <div className="card-stacked">
-                  <div className="card-content">
-                    <div className='tituloCard'>
-                      <h2>MIERCOLES</h2>
-                    </div>
-                    <h6>{anuncios.b.miercoles.titulo}</h6>
-                    <p>{anuncios.b.miercoles.info}</p><br />
-                    <code>Inicia: {anuncios.b.miercoles.hora_inicio} - Termina: {anuncios.b.miercoles.hora_fin}</code>
-                  </div>
-                  <div className="card-action">
-                    <a href="#a" className='blue-text'><i className='material-icons black-text left'>event</i>Agregar a mi calendario</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col s12 m3">
-              <div className="card horizontal">
-                <div className="card-stacked">
-                  <div className="card-content">
-                    <div className='tituloCard'>
-                      <h2>JUEVES</h2>
-                    </div>
-                    <h6>{anuncios.b.jueves.titulo}</h6>
-                    <p>{anuncios.b.jueves.info}</p><br />
-                    <code>Inicia: {anuncios.b.jueves.hora_inicio} - Termina: {anuncios.b.jueves.hora_fin}</code>
-                  </div>
-                  <div className="card-action">
-                    <a href="#a" className='blue-text'><i className='material-icons black-text left'>event</i>Agregar a mi calendario</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col s12 m4">
-              <div className="card horizontal">
-                <div className="card-stacked">
-                  <div className="card-content">
-                    <div className='tituloCard'>
-                      <h2>VIERNES</h2>
-                    </div>
-                    <h6>{anuncios.b.viernes.titulo}</h6>
-                    <p>{anuncios.b.viernes.info}</p><br />
-                    <code>Inicia: {anuncios.b.viernes.hora_inicio} - Termina: {anuncios.b.viernes.hora_fin}</code>
-                  </div>
-                  <div className="card-action">
-                    <a href="#a" className='blue-text'><i className='material-icons black-text left'>event</i>Agregar a mi calendario</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col s12 m4">
-              <div className="card horizontal">
-                <div className="card-stacked">
-                  <div className="card-content">
-                    <div className='tituloCard'>
-                      <h2>SABADO</h2>
-                    </div>
-                    <h6>{anuncios.b.sabado.titulo}</h6>
-                    <p>{anuncios.b.sabado.info}</p><br />
-                    <code>Inicia: {anuncios.b.sabado.hora_inicio} - Termina: {anuncios.b.sabado.hora_fin}</code>
-                  </div>
-                  <div className="card-action">
-                    <a href="#a" className='blue-text'><i className='material-icons black-text left'>event</i>Agregar a mi calendario</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col s12 m4">
-              <div className="card horizontal">
-                <div className="card-stacked">
-                  <div className="card-content">
-                    <div className='tituloCard'>
-                      <h2>DOMINGO</h2>
-                    </div>
-                    <h6>{anuncios.b.domingo.titulo}</h6>
-                    <p>{anuncios.b.domingo.info}</p><br />
-                    <code>Inicia: {anuncios.b.domingo.hora_inicio} - Termina {anuncios.b.domingo.hora_fin}</code>
-                  </div>
-                  <div className="card-action">
-                    <a href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=MjBsb3IxODBzcDM2dDhwOTJuNnI1YjAzNTJfMjAyMDA0MTlUMTMzMDAwWiAwNWxsY29pM2IxMDhicDJiMGs2NnFzdGhrZ0Bn&amp;tmsrc=05llcoi3b108bp2b0k66qsthkg%40group.calendar.google.com&amp;scp=ALL" className='blue-text'><i className='material-icons black-text left'>event</i>Agregar a mi calendario</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    );
-
+      }
+    </>
   }
 
 }
 
-
 export default Anuncios;
+
+
+function useFirebaseAnuncios(ruta) {
+  let [anuncios, setGrupoDeAnuncios] = useState([]);
+
+  useEffect(() => {
+    const database = firebase.database();
+    const referencia = database;
+    const rutaPrincipal = '/pagina/' + ruta + '/anuncios/';
+    referencia.ref(rutaPrincipal).once('value').then((e) => {
+      if (e.val() !== null) {
+        if (e.val().ruta_objeto !== undefined) {
+          for (let i = 0; i < e.val().ruta_objeto.length; i++) {
+            referencia.ref(e.val().ruta_objeto[i]).once('value').then((ea) => {
+              setGrupoDeAnuncios(anuncios => anuncios.concat({ lugar: e.val().ruta_objeto[i].slice(7, -9), anuncio: ea.val() }));
+            });
+          }
+        } else {
+          setGrupoDeAnuncios([{ lugar: ruta, anuncio: e.val() }])
+        }
+      } else {
+        console.log('error base de datos, la ruta no se encuentra, devuelve false');
+        setGrupoDeAnuncios(false);
+      }
+    })
+  }, [ruta]);
+
+
+
+
+  if (anuncios.length !== 0) { return anuncios };
+}
+

@@ -3,6 +3,7 @@ import '../css/componentes/Youtube.css';
 import Iframe from 'react-iframe';
 import firebase from "../firebaseConfig";
 import 'firebase/firebase-database';
+import Cargando from './Cargando';
 
 
 //necesito traer de firebase el enlace de youtube correspondiente.
@@ -33,7 +34,7 @@ function Youtube(props) {
     let urlYoutube = useObtenerCodigoYoutube(props.ruta);
 
     return urlYoutube === null ?
-        (<h1>CARGANDO Video...</h1>)
+        (<center><Cargando/></center>)
         : (
             urlYoutube.error === true ? (<h1>EL video no puede ser cargado</h1>)
                 : (<Iframe loading="lazy" src={"https://www.youtube.com/embed/" + urlYoutube.codigo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />)
