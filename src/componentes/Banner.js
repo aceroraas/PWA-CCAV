@@ -4,6 +4,7 @@ import firebase from '../firebaseConfig';
 import 'firebase/firebase-database';
 import 'firebase/firebase-storage';
 import { Link } from 'react-router-dom';
+import Cargando from './Cargando';
 
 
 function useObtenerBannerFirebase(ruta) {
@@ -30,7 +31,7 @@ function Banner(props) {
 
 
     return banner === null ?
-        (<h1>hola el banner esta vacio</h1>)
+        (<center><Cargando/></center>)
         : (<>
             <div className="banner">
                 <div className="caption center-align">

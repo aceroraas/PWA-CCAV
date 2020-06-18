@@ -4,10 +4,48 @@ import firebase from "../firebaseConfig";
 import 'firebase/firebase-database';
 import Cargando from './Cargando';
 
+
 function Anuncios(props) {
   const anuncio = useFirebaseAnuncios(props.ruta);
-console.log(anuncio);
-
+  let contar = 0;
+  
+  function derecha(e) {
+    e.preventDefault();
+     for (let i = 0; i < anuncio.length; i++) {
+      document.getElementById(i).style.visibility='hidden';
+      document.getElementById(i).style.opacity='0';
+      document.getElementById(i).style.position='absolute';
+    }
+    document.getElementById(contar).style.transition="visibility 0s, opacity 0.5s linear";
+    document.getElementById(contar).style.visibility='visible';
+    document.getElementById(contar).style.opacity='1';
+    document.getElementById(contar).style.position='initial';
+     if(contar<(anuncio.length-1)){
+      contar++;
+     }else{
+       contar =0;
+     }
+  }
+  function izquierda(e) {
+    
+    e.preventDefault();
+    for (let i = 0; i < anuncio.length; i++) {
+      document.getElementById(i).style.visibility='hidden';
+      document.getElementById(i).style.opacity='0';
+      document.getElementById(i).style.position='absolute';
+    }
+    document.getElementById(contar).style.transition="visibility 0s, opacity 0.5s linear";
+    document.getElementById(contar).style.visibility='visible';
+    document.getElementById(contar).style.opacity='1';
+    document.getElementById(contar).style.position='initial';
+    
+    if(contar>0){
+     contar--;
+    }else{
+      contar =anuncio.length-1;
+    }
+  }
+ 
   if (anuncio === undefined) {
     return <center><Cargando /></center>
   } else {
@@ -16,14 +54,16 @@ console.log(anuncio);
 
       <div className='anuncioComponente white-text cyan darken-1'>
 
-        <a href='#l' id='btni' className='btnAnuncio'><i className='material-icons'>chevron_left</i></a>
-        <a href='#l' id='btnd' className='btnAnuncio'><i className='material-icons'>chevron_right</i></a>
+        <a onClick={izquierda} href='#l' id='btni' className='btnAnuncio'><i className='material-icons'>chevron_left</i></a>
+        <a onClick={derecha} href='#l'  id='btnd' className='btnAnuncio'><i className='material-icons'>chevron_right</i></a>
+        
         <h2>Anuncios Semanales</h2>
         <h3>Actividades de la iglesia</h3>
       </div>
       {(anuncio instanceof Array) ? anuncio.map((e, i) =>
-        <div key={i} id={i} className='fondoTarjetas'>
-          <center>
+        
+        <div key={i} id={i}  className={'fondoTarjeta '+ (i>0? ' ocultar': '')}>
+         <center>
             <h5>CCAV - {e.lugar.toUpperCase()}</h5>
           </center>
           {(e.anuncio !== null) ?
@@ -122,7 +162,6 @@ console.log(anuncio);
             </div>}
 
         </div>
-
 
       )
         ://en caso de que no sea un array
