@@ -1,0 +1,140 @@
+.fondoJovenes {
+    display: flex;
+    overflow: hidden !important;
+    width: 100%;
+}
+
+#bna, #pto {
+    width: 50%;
+    height: 860px;
+    transition: .2s ease;
+}
+
+#bna img, #pto img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 860px;
+}
+
+#pto h2 {
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    font-size: 48px;
+    right: 0;
+    left: 50%;
+    transition: ease-in-out 0.3s;
+}
+
+#bna h2 {
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    font-size: 48px;
+    right: 50%;
+    left: 0;
+    transition: ease-in-out 0.3s;
+}
+
+#pto h2:hover {
+    background-color:white;
+    color: black;
+    left: 0;
+}
+
+#bna h2:hover {
+    background-color: white;
+    color: black;
+    right:  0;
+}
+
+#bna:hover {
+    width: 100%;
+}
+
+#pto:hover {
+    width: 100%;
+}
+
+#pto:hover~#bna {
+    display: none !important;
+}
+
+#bna:hover~#pto {
+    display: none;
+}
+
+#pto::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    height: 860px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#bna::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -50%;
+    right: 50%;
+    height: 860px;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: .3s ease;
+}
+
+@media (max-width: 600px) {
+    .fondoJovenes {
+        display: inline-block;
+    }
+    #bna, #pto {
+        width: 100%;
+        height: 720px;
+    }
+    #pto::before {
+        top: 720px;
+        left: 0%;
+        right: 0;
+        height: 720px;
+    }
+    #bna::before {
+        top: 0;
+        left: 0%;
+        right: 0;
+        height: 720px;
+    }
+    #pto h2:hover {
+        background-color: rgba(255, 255, 255, 0.6);
+        color: black;
+    }
+    #bna h2:hover {
+        background-color: rgba(255, 255, 255, 0.6);
+        color: black;
+    }
+    #pto:hover~#bna {
+        display: inline-block !important;
+    }
+    #bna:hover~#pto {
+        display: inline-block !important;
+    }
+    #bna h2 {
+        border: 2px white solid;
+        border-radius: 15px;
+        right: 0;
+        left: 0;
+    }
+    #pto h2 {
+        border: 2px white solid;
+        border-radius: 15px;
+        top: calc(40% + 720px);
+        right: 0;
+        left: 0;
+    }
+}

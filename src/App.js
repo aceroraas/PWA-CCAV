@@ -12,6 +12,9 @@ import Navbar from './componentes/Navbar';
 // paginas / modulos
 import PInicio from './paginas/PInicio';
 import Footer from './componentes/Footer';
+import Jovenes from './paginas/PJovenes';
+import PVivo from './paginas/PVivo';
+import PjovenesSede from './paginas/PjovenesSede';
 
 
 function App() {
@@ -23,8 +26,23 @@ function App() {
       </header>
       <main>
       <Switch>
+      <Route path='/vivo/*'>
+        <PVivo />
+      </Route>
       <Route path='/vivo'>
-        <h1>hola vivo</h1>
+        <PVivo />
+      </Route>
+      <Route path='/jovenes/*'>
+        <PjovenesSede/>
+      </Route>
+      <Route path='/jovenes'>
+        <Jovenes />
+      </Route>
+      <Route path='/documentos/*'>
+      <center><h1>documento numero X</h1></center>
+      </Route>
+      <Route path='/documentos'>
+        <center><h1>Area Documentos</h1></center>
       </Route>
       <Route path='/' exact>
           <PInicio />

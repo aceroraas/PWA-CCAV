@@ -22,12 +22,11 @@ render(){
               <div className="col l4 offset-l2 s12">
                 <h5 className="white-text">Enlaces que tal vez te interesen</h5>
                 <ul>
-                  <li><Link className="grey-text text-lighten-3" to="/barcelona">Sede Barcelona</Link></li>
-                  <li><Link className="grey-text text-lighten-3" to="/puerto">Sede Puerto La cruz</Link></li>
-                  <li><Link className="grey-text text-lighten-3" to="/vidaverticalb">Vida Vertical Jovenes Barcelona</Link></li>
-                  <li><Link className="grey-text text-lighten-3" to="/vidaverticalp">Vida Vertical Jovenes Puerto</Link></li>
-                  <li><Link className="grey-text text-lighten-3" to="/media/tipografia">Tipografia de la web</Link></li>
-                  <li><Link className="grey-text text-lighten-3" to="/media/logotipo">Logotipos Prototipos</Link></li>
+                  <li><Link className="grey-text text-lighten-3" to="/ccav/bna">Sede Barcelona</Link></li>
+                  <li><Link className="grey-text text-lighten-3" to="/ccav/pto">Sede Puerto La cruz</Link></li>
+                  <li><Link className="grey-text text-lighten-3" to="/jovenes/bna">Vida Vertical Jovenes Barcelona</Link></li>
+                  <li><Link className="grey-text text-lighten-3" to="/jovenes/pto">Vida Vertical Jovenes Puerto</Link></li>
+                  <li><Link className="grey-text text-lighten-3" to="/nosotros">Sobre Nosotros</Link></li>
                   <li><Link className="grey-text text-lighten-3" to="/equipo/dev">Desarrolladores de la web</Link></li>
                 </ul>
               </div>

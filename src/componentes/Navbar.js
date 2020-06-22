@@ -89,7 +89,7 @@ class Navbar extends Component {
                                 <a href="#a" data-target="slide-out" className="sidenav-trigger right"><i className="material-icons">menu</i></a>
                             <ul id="nav-mobile" className="right hide-on-med-and-down">
                                 <li><Link to="/">INICIO</Link></li>
-                                <li><Link to="/vidavertical">JOVENES</Link></li>
+                                <li><Link to="/jovenes">JOVENES</Link></li>
                                 <li><a className='dropdown-trigger' href='#MEDIA' data-target='dropdown1'>MEDIA</a></li>
                                 <li><Link to='/login'>INICIAR SESIÓN</Link></li>
                             </ul>
@@ -99,7 +99,7 @@ class Navbar extends Component {
                 
                 <ul id="slide-out" className="sidenav">                
                     <li><Link to="/">INICIO</Link></li>
-                    <li><Link to="./vidavertical">JOVENES</Link></li>
+                    <li><Link to="./jovenes">JOVENES</Link></li>
                     <li className="no-padding">
                         <ul className="collapsible collapsible-accordion">
                             <li>
