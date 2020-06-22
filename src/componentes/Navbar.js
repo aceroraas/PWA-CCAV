@@ -68,6 +68,13 @@ class Navbar extends Component {
             // eslint-disable-next-line
             let instances = M.Slider.init(elems, { height: 720, indicators: false, duration: 400, interval: 6000 });
         });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.parallax');
+            // eslint-disable-next-line
+            var instances = M.Parallax.init(elems);
+          });
     }
     
    
