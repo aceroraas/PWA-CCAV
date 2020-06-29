@@ -15,6 +15,7 @@ import Footer from './componentes/Footer';
 import Jovenes from './paginas/PJovenes';
 import PVivo from './paginas/PVivo';
 import PjovenesSede from './paginas/PjovenesSede';
+import PSede from './paginas/PSede';
 
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
       </header>
       <main>
       <Switch>
+      <Route path='/ccav/*'>
+        <PSede />
+      </Route>
       <Route path='/vivo/*'>
         <PVivo />
       </Route>

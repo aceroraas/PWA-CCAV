@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/componentes/FormularioAyuda.css';
+import { Link } from 'react-router-dom';
 
 function FormularioAyuda(props) {
     return <>
@@ -15,7 +16,7 @@ function FormularioAyuda(props) {
                 <input id='email' type='email' placeholder='micorreo@correo.com'/>
                 <span>Dinos tu motivos</span>
                 <textarea id='motivo' class="materialize-textarea" placeholder='Cuentanos porque o quien quieres que oremos'/>
-                <button id='btnMotivoOracion'>Solicitar Oración</button>
+                <Link to='/acompañanos' id='btnMotivoOracion'>Solicitar Oración</Link>
             </div>
         </div>
     </>
