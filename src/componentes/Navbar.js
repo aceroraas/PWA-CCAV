@@ -85,7 +85,7 @@ class Navbar extends Component {
                 <div className='navbar-fixed'>
                     <nav>
                         <div className="nav-wrapper fixed">
-                                <Link to="/" className="brand-logo"><img width='50' src={logotipo} alt='Logotipo ccav'></img></Link>
+                                <Link to="/" className="brand-logo"><img width='50' height='50' src={logotipo} alt='Logotipo ccav'></img></Link>
                                 <a href="#a" data-target="slide-out" className="sidenav-trigger right"><i className="material-icons">menu</i></a>
                             <ul id="nav-mobile" className="right hide-on-med-and-down">
                                 <li><Link to="/">INICIO</Link></li>

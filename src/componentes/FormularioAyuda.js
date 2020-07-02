@@ -15,7 +15,7 @@ function FormularioAyuda(props) {
                 <span>Dejanos tu Correo</span>
                 <input id='email' type='email' placeholder='micorreo@correo.com'/>
                 <span>Dinos tu motivos</span>
-                <textarea id='motivo' class="materialize-textarea" placeholder='Cuentanos porque o quien quieres que oremos'/>
+                <textarea id='motivo' className="materialize-textarea" placeholder='Cuentanos porque o quien quieres que oremos'/>
                 <Link to='/acompañanos' id='btnMotivoOracion'>Solicitar Oración</Link>
             </div>
         </div>

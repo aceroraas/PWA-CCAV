@@ -11,20 +11,17 @@ import FormularioAyuda from '../componentes/FormularioAyuda';
 function PSede(){
     let location = useLocation().pathname.split('/')[2];
     return (
-        <div>
-           { <Banner ruta={location} /> 
-           }
+        <>
+            <Banner ruta={location} /> 
             <center>
                 <h1>CENTRO CRISTIANO ADORACIÓN VIVA</h1>
                 <h2>SEDE {location.toUpperCase()}</h2>
+            </center>
                 <Anuncios ruta={location}/>
                 <Youtube ruta={location} />
                 <Pastores ruta ={location}/>
                 <FormularioAyuda ruta ={location}/>
-            </center>
-            <br/>
-            
-        </div>
+        </>
     );
 }
 export default PSede;
